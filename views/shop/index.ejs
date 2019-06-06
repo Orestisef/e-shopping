@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+    <% include ../layouts/layout %>
+</head>
+
+<body>
+    <% if (login) {%>
+
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <div class="container">
+    <% products.forEach(function(product) { %>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="card">
+          <img src="<%= product.imagePath %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %></h5>
+            <p class="card-text">
+              <%= product.description %></p>
+            <div class="clearfix">
+              <div class="price pull-left">
+                <%= product.price %>$
+              </div>
+              <a href="#" class="btn btn-success pull-right" role="button">Add to Shopping Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+
+<% include ../layouts/layoutscripts %>
+
+</body>
+</div>
+
+</html>
+<% } else {%>
+  <a  href="/user/signin">Sign In</a>
+  <%}%>
